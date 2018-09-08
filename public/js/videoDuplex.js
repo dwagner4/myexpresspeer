@@ -22,17 +22,19 @@ function doStart () {
 		alert("Error! Make sure to click allow when asked for permission by the browser");
 	});
 	// peer1 = new Peer();
-	stunIP = document.getElementById('stunip').value;
-	peer1 = new Peer({host: "/", port: 9000, path: "peerjs", debug: 3});
+	stunIP = document.getElementById('stunip').value || "/";
+	peer1 = new Peer({host: stunIP, port: 9000, path: "peerjs", debug: 3});
 	peer1.on('open', function(id) {
 	  peer1id = id;
 	  console.log('I\'m peer1id and my id is: ' + peer1id);
+		document.getElementById('localid').innerHTML = peer1id;
 	});
 	// answer call from peer1
 	peer1.on('call', function(call) {
-		console.log("just awnsered fm peer2")
+		console.log("just awnsered call")
 	  call.answer(localStream);
 		call.on('stream',function(stream){
+			console.log("got the stream");
 			remoteStream = stream;
 			remoteVideo.srcObject = remoteStream;
 		});
@@ -44,14 +46,12 @@ function doStart () {
 
 // call peer2
 function doCall () {
-	alert("hi Dean");
 	let peer2id = document.getElementById('remoteid').value;
-	document.getElementById('remoteaddress').innerHTML = peer2id;
-	console.log(localStream);
 	callback = peer1.call(peer2id, localStream);
+	console.log("call to remote " + peer2id);
 	callback.on('stream',function(stream){
+		console.log("got the stream");
 		remoteStream = stream;
 		remoteVideo.srcObject = remoteStream;
 	});
-	console.log(callback);
 }

@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <header>
+      <title>Send</title>
+  </header>
+  <body>
+
+    <button id="startBtn" onclick="doStart()">Start</button> STUN IP: <input id="stunip"><br>
+    <h2>WebTRC ID: <span id="remoteaddress"><span></h2>
+
+    <video id="localVideo" autoplay playsinline></video>
+
+    <button id="callBtn" onclick="doCall()">Call</button>
+    <input id="remoteid"><br>
+    <video id="remoteVideo" autoplay playsinline></video>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.9/peer.min.js"></script>
+    <script src="js/videoDuplex.js"></script>
+  </body>
+</html>

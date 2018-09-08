@@ -1,0 +1,19 @@
+{
+  "name": "myexpresspeer",
+  "version": "1.0.0",
+  "description": "serve the peer clients and run the STUN server from one location",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dwagner4/myexpresspeer.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dean@dfwagners.net",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "peer": "^0.2.10"
+  }
+}

@@ -1,19 +1,20 @@
 <!doctype html>
 <html>
   <header>
-      <title>Video</title>
+      <title>Text</title>
   </header>
   <body>
 
     <button id="startBtn" onclick="doStart()">Start</button> STUN IP: <input id="stunip"><br>
     <h2>My WebTRC ID: <span id="localid"><span></h2>
-    <video id="localVideo" autoplay playsinline></video><br>
-
-    <button id="callBtn" onclick="doCall()">Call</button>
+    <button id="connectBtn" onclick="doConnect()">Connect</button>
     <input id="remoteid"><br>
-    <video id="remoteVideo" autoplay playsinline></video>
+    <hr>
+    <button id="sendBtn" onclick="doSend()">Send</button>
+    <input id="textinput">
+    <p id="conversation">my conversation</p>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.9/peer.min.js"></script>
-    <script src="js/videoDuplex.js"></script>
+    <script src="js/textDuplex.js"></script>
   </body>
 </html>

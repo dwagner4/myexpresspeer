@@ -27,6 +27,7 @@ function doStart () {
 	  // Receive messages
 		  conn.on('data', function(data) {
 		    console.log('Received', data);
+				makeMessage("Remote", data);
 		  });
 		});
 	});
@@ -44,11 +45,21 @@ function doConnect () {
 	  // Receive messages
 	  conn.on('data', function(data) {
 	    console.log('Received', data);
+			makeMessage("Remote", data);
 	  });
 		conn.send('Hello!');
+		makeMessage("Local", "Hello!")
 	});
 }
 
 function doSend () {
-	conn.send('Hello! again');
+	var newtext = document.getElementById('textinput').value;
+	conn.send(newtext);
+	makeMessage("Local", newtext);
+}
+
+function makeMessage (peer, msgtext) {
+	var newP = document.createElement("p");
+	newP.innerHTML = peer + ":  " + msgtext;
+	document.getElementById('conversation').append(newP);
 }
